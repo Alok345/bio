@@ -19,15 +19,17 @@ import { defaultProfile } from "./data";
 
 /**
  * Utility function to get the primary portfolio admin user document.
- * Since this is a personal portfolio, we query the 'users' collection 
- * and pick the first available user document.
+ * Queries the 'users' collection and looks for the admin email,
+ * falling back to the first available document.
  */
 async function getAdminUserDoc() {
   const usersSnap = await getDocs(collection(db, "users"));
   if (usersSnap.empty) {
     return null;
   }
-  return usersSnap.docs[0];
+  const adminEmail = "akumar.panday31@gmail.com";
+  const adminDoc = usersSnap.docs.find(doc => doc.data().email === adminEmail);
+  return adminDoc || usersSnap.docs[0];
 }
 
 // ============================================

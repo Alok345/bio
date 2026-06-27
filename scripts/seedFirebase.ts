@@ -49,16 +49,11 @@ async function seedData() {
       console.log(`✅ User created successfully with UID: ${uid}`);
     } catch (error: any) {
       if (error.code === 'auth/email-already-in-use') {
-         console.warn("⚠️ User already exists. Let's proceed assuming you want to update the data. (For a clean run, delete the user in Firebase Console).");
-         // Note: Getting UID of existing user via Client SDK without login is not possible directly.
-         // If you need to re-run frequently, uncomment signInWithEmailAndPassword below:
-         /*
-         import { signInWithEmailAndPassword } from 'firebase/auth';
+         console.warn("⚠️ User already exists. Attempting to sign in to update the data...");
+         const { signInWithEmailAndPassword } = await import('firebase/auth');
          const cred = await signInWithEmailAndPassword(auth, adminEmail, adminPassword);
          uid = cred.user.uid;
-         */
-         console.error("Please delete the existing user from Firebase Authentication first, or use a new email/password.");
-         process.exit(1);
+         console.log(`✅ User signed in successfully with UID: ${uid}`);
       } else {
         throw error;
       }

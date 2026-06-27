@@ -60,9 +60,9 @@ export default function AboutSection() {
                 and cloud deployments on GCP—I build solutions that are both scalable and maintainable.
               </p>
               <p className="text-muted-foreground leading-relaxed">
-                Currently working at <span className="text-purple-400 font-semibold">Ad2Click Media</span>,
-                where I build and maintain scalable web applications with real-time data synchronization,
-                managing the complete development lifecycle from design to deployment.
+                Currently working at <span className="text-purple-400 font-semibold">Testgrid.io</span> in Surat
+                as an SDE 2, contributing to the development of scalable testing infrastructure and automation platforms,
+                ensuring high code quality and best engineering practices.
               </p>
             </div>
 
